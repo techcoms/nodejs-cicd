@@ -1,21 +1,28 @@
 version: 0.2
 
 phases:
+  pre_build:
+    commands:
+      - echo "Setting up SSH key"
+      - mkdir -p /root/.ssh
+      - echo "$SSH_PRIVATE_KEY" > /root/.ssh/ec2-key.pem
+      - chmod 600 /root/.ssh/ec2-key.pem
+
   install:
     runtime-versions:
       nodejs: 18
     commands:
-      - echo Installing dependencies
+      - echo "Installing dependencies"
       - npm install
 
   build:
     commands:
-      - echo Running tests
+      - echo "Running tests"
       - npm test
 
   post_build:
     commands:
-      - echo Deploying to EC2
+      - echo "Deploying to EC2"
       - chmod +x scripts/deploy.sh
       - ./scripts/deploy.sh
 
