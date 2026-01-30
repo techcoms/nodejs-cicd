@@ -1,0 +1,13 @@
+{
+  "name": "nodejs-ec2-cicd",
+  "version": "1.0.0",
+  "description": "Node.js app deployed using AWS CodePipeline",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"No tests defined\" && exit 0"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
